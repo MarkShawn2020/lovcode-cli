@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.53
+
+- docs: 全新 README，讲述从反编译到调试通的完整故事
+- docs: 添加实际运行截图作为封面（LOVCODE logo + Opus 4.6）
+- docs: 添加 Apache-2.0 LICENSE
+- chore: 仓库设为 public，优化 GitHub 描述和话题标签
+- chore: 添加 release workflow（tag 触发 GitHub Release）
+
 ## 2.1.52
 
 - fix(api): 修复 OAuth 模式下 API 500/429 错误
