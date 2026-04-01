@@ -83,7 +83,7 @@ export function LovcodeLogo() {
         </Text>
       ))}
       <Text>{' '}</Text>
-      <Text dimColor>{'  ✦  AI Coding  ·  Powered by Claude  ✦'}</Text>
+      <Text dimColor>{'  ✦  Powered by Lovstudio  ·  Special Thanks to Claude Code  ✦'}</Text>
     </Box>
   );
 }
