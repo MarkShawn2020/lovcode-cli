@@ -1,11 +1,11 @@
 {
-  "name": "lovstudio-code",
+  "name": "lovcode-cli",
   "version": "2.1.52",
-  "description": "Lovstudio Code — AI coding assistant in the terminal, powered by Claude",
+  "description": "Lovcode CLI — AI coding assistant in the terminal, powered by Claude",
   "type": "module",
   "author": "Lovstudio",
   "keywords": [
-    "lovstudio",
+    "lovcode",
     "claude",
     "cli",
     "ai",
@@ -16,7 +16,7 @@
     "bun": ">=1.2.0"
   },
   "bin": {
-    "lovstudio-code": "dist/cli.js"
+    "lovcode-cli": "dist/cli.js"
   },
   "workspaces": [
     "packages/*",

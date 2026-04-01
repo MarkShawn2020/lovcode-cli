@@ -39,7 +39,7 @@ export function createWhatsNewFeed(releaseNotes: string[]): FeedConfig {
       text: note
     };
   });
-  const emptyMessage = ("external" as string) === 'ant' ? 'Unable to fetch latest claude-cli-internal commits' : 'Check the Claude Code changelog for updates';
+  const emptyMessage = ("external" as string) === 'ant' ? 'Unable to fetch latest claude-cli-internal commits' : 'Check the Lovcode CLI changelog for updates';
   return {
     title: ("external" as string) === 'ant' ? "What's new [ANT-ONLY: Latest CC commits]" : "What's new",
     lines,
@@ -73,7 +73,7 @@ export function createProjectOnboardingFeed(steps: Step[]): FeedConfig {
 }
 export function createGuestPassesFeed(): FeedConfig {
   const reward = getCachedReferrerReward();
-  const subtitle = reward ? `Share Claude Code and earn ${formatCreditAmount(reward)} of extra usage` : 'Share Claude Code with friends';
+  const subtitle = reward ? `Share Lovcode CLI and earn ${formatCreditAmount(reward)} of extra usage` : 'Share Lovcode CLI with friends';
   return {
     title: '3 guest passes',
     lines: [],

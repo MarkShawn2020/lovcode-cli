@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Lovcode CLI launcher — resolves symlinks to find the real install dir
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ]; do
+  DIR="$(cd "$(dirname "$SOURCE")" && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ "$SOURCE" != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DIR="$(cd "$(dirname "$SOURCE")" && pwd)"
+
+if command -v bun &>/dev/null; then
+  exec bun "$DIR/dist/cli.js" "$@"
+elif command -v node &>/dev/null; then
+  exec node "$DIR/dist/cli.js" "$@"
+else
+  echo "Error: Neither bun nor node found in PATH" >&2
+  exit 1
+fi
