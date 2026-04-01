@@ -1,31 +1,22 @@
 {
-  "name": "claude-js",
-  "version": "1.0.2",
-  "description": "Reverse-engineered Anthropic Claude Code CLI — interactive AI coding assistant in the terminal",
+  "name": "lovstudio-code",
+  "version": "2.1.52",
+  "description": "Lovstudio Code — AI coding assistant in the terminal, powered by Claude",
   "type": "module",
-  "author": "claude-code-best <claude-code-best@proton.me>",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/claude-code-best/claude-code.git"
-  },
-  "homepage": "https://github.com/claude-code-best/claude-code#readme",
-  "bugs": {
-    "url": "https://github.com/claude-code-best/claude-code/issues"
-  },
+  "author": "Lovstudio",
   "keywords": [
+    "lovstudio",
     "claude",
-    "anthropic",
     "cli",
     "ai",
     "coding-assistant",
-    "terminal",
-    "repl"
+    "terminal"
   ],
   "engines": {
     "bun": ">=1.2.0"
   },
   "bin": {
-    "claude-js": "dist/cli.js"
+    "lovstudio-code": "dist/cli.js"
   },
   "workspaces": [
     "packages/*",

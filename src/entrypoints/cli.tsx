@@ -3,7 +3,7 @@
 const feature = (_name: string) => false;
 if (typeof globalThis.MACRO === "undefined") {
     (globalThis as any).MACRO = {
-        VERSION: "2.1.888",
+        VERSION: "2.1.52",
         BUILD_TIME: new Date().toISOString(),
         FEEDBACK_CHANNEL: "",
         ISSUES_EXPLAINER: "",
@@ -16,6 +16,10 @@ if (typeof globalThis.MACRO === "undefined") {
 (globalThis as any).BUILD_TARGET = "external";
 (globalThis as any).BUILD_ENV = "production";
 (globalThis as any).INTERFACE_TYPE = "stdio";
+// Set USER_TYPE — in official builds this is replaced at compile time
+process.env.USER_TYPE = "external";
+// Disable experimental betas that may cause server-side issues with non-official builds
+process.env.CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS = "1";
 
 // Bugfix for corepack auto-pinning, which adds yarnpkg to peoples' package.jsons
 // eslint-disable-next-line custom-rules/no-top-level-side-effects
@@ -67,7 +71,7 @@ async function main(): Promise<void> {
     ) {
         // MACRO.VERSION is inlined at build time
         // biome-ignore lint/suspicious/noConsole:: intentional console output
-        console.log(`${MACRO.VERSION} (Claude Code)`);
+        console.log(`${MACRO.VERSION} (Lovstudio Code)`);
         return;
     }
 

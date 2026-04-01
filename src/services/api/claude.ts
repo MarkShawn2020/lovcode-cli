@@ -3373,6 +3373,16 @@ export function adjustParamsForNonStreaming<
   // Adjust thinking budget if it would exceed capped max_tokens
   // to maintain the constraint: max_tokens > thinking.budget_tokens
   const adjustedParams = { ...params }
+
+  // Convert adaptive thinking to budget-based for non-streaming
+  // (adaptive thinking requires streaming support)
+  if (adjustedParams.thinking?.type === 'adaptive') {
+    adjustedParams.thinking = {
+      type: 'enabled',
+      budget_tokens: Math.floor(cappedMaxTokens * 0.75),
+    } as typeof adjustedParams.thinking
+  }
+
   if (
     adjustedParams.thinking?.type === 'enabled' &&
     adjustedParams.thinking.budget_tokens

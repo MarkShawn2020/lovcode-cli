@@ -298,11 +298,11 @@ export async function getAnthropicClient({
   }
 
   // Determine authentication method based on available tokens
+  const oauthTokens = isClaudeAISubscriber() ? getClaudeAIOAuthTokens() : null
+
   const clientConfig: ConstructorParameters<typeof Anthropic>[0] = {
     apiKey: isClaudeAISubscriber() ? null : apiKey || getAnthropicApiKey(),
-    authToken: isClaudeAISubscriber()
-      ? getClaudeAIOAuthTokens()?.accessToken
-      : undefined,
+    authToken: oauthTokens?.accessToken,
     // Set baseURL from OAuth config when using staging OAuth
     ...(process.env.USER_TYPE === 'ant' &&
     isEnvTruthy(process.env.USE_STAGING_OAUTH)
