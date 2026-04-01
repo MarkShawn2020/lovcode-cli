@@ -1,0 +1,45 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag (e.g. v2.1.52)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref_name }}
+
+      - name: Get tag
+        id: tag
+        run: echo "tag=${{ github.event.inputs.tag || github.ref_name }}" >> $GITHUB_OUTPUT
+
+      - name: Extract release notes
+        id: notes
+        run: |
+          VERSION="${{ steps.tag.outputs.tag }}"
+          VERSION_NUM="${VERSION#v}"
+          if [ -f CHANGELOG.md ]; then
+            NOTES=$(awk -v ver="$VERSION_NUM" '
+              /^## / { if (found) exit; if ($2 == ver) { found=1; next } }
+              found { print }
+            ' CHANGELOG.md)
+          fi
+          if [ -z "$NOTES" ]; then NOTES="Release $VERSION"; fi
+          echo 'notes<<EOF' >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          body: ${{ steps.notes.outputs.notes }}
