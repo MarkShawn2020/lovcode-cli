@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="docs/images/cover.png" alt="Lovcode CLI Cover" width="100%">
+  <img src="docs/images/screenshot.png" alt="Lovcode CLI — Running Opus 4.6" width="100%">
 </p>
 
 <h1 align="center">Lovcode CLI</h1>
 
 <p align="center">
   <strong>We hacked Claude Code open-source, debugged it from scratch, and made it actually work.</strong><br>
-  <sub>macOS / Linux / Windows (WSL)</sub>
+  <sub>macOS / Linux / Windows (WSL) &middot; Opus 4.6 / Sonnet / Haiku</sub>
 </p>
 
 <p align="center">
